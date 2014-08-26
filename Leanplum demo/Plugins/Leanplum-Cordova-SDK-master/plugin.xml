@@ -27,14 +27,17 @@
 		<source-file src="src/ios/AppDelegate+notification.m" />
 
 		<config-file target="*-Info.plist" parent="APP_ID">
+            <!-- replace with your own key -->
             <string>E5VaRDg7RmchoyiGzUIzK3nZiydZaDvkfqWbEK5O3UQ</string>
         </config-file>
 
         <config-file target="*-Info.plist" parent="DEVELOPMENT_KEY">
+            <!-- replace with your own key -->
             <string>e1WB24B7VaUSuzrkdhRdB1SjpadbDQJNkyGmXrkx5C0</string>
         </config-file>
 
         <config-file target="*-Info.plist" parent="PRODUCTION_KEY">
+            <!-- replace with your own key -->
             <string>GmmlSDBouVSDpvmNk28WhPV0toTs0nak9xOtt3CVTDM</string>
         </config-file>
 

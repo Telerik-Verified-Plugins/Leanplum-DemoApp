@@ -34,6 +34,14 @@
             Optimize mobile content, send messages to (segments of) your users, analyze app usage, and more!
         </p>
         <p>
+            <strong>Important</strong><br/>
+            <span class="smaller">
+                Inside AppBuilder open Plugins, Leanplum, plugin.xml
+                and do as this comment suggests (3 occurances):<br/>
+                &lt;!-- replace with your own key --&gt;
+            </span>
+        </p>        
+        <p>
             Custom plugins don't work in the simulator and the AppBuilder companion app,
             so inside Telerik AppBuilder choose Run - Build - iOS - App package.
         </p>
@@ -46,7 +54,7 @@
         data-model="app.demoService.viewModel">
 
         <div class="demo">
-            <h3 class="hassubtitle">Track</h3>
+            <h3 class="hassubtitle">Track Events</h3>
             <div class="subtitle">
                 Leanplum tracks basic usage of your automatically, but you track custom events as well.
                 After clicking these buttons go to your Leanplum analytics dashboard and filter on these.

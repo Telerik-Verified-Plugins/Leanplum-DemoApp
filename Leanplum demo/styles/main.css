@@ -35,6 +35,10 @@ h3.hassubtitle {
     margin-left: 10%;    
 }
 
+.smaller {
+    font-size: 0.8em;
+}
+
 /* RETINA DISPLAY STYLES */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
     .logo-image {
