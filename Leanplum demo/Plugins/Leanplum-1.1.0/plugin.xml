@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.telerik.leanplum" version="1.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>Leanplum</name>
+	<js-module name="Leanplum" src="www/LeanPlum.js">
+		<clobbers target="Leanplum" />
+	</js-module>
+
+	<preference name="APP_ID" />
+	<preference name="DEVELOPMENT_KEY" />
+	<preference name="PRODUCTION_KEY" />
+
+	<platform name="ios">
+		<config-file parent="/*" target="config.xml">
+			<feature name="Leanplum">
+				<param name="ios-package" value="CDVLeanPlum" />
+			</feature>
+		</config-file>
+
+		<framework src="Security.framework"/>
+    	<framework src="CFNetwork.framework"/>
+    	<framework src="SystemConfiguration.framework"/>
+    	<framework src="AdSupport.framework"/>
+
+		<source-file framework="true" src="lib/ios/LeanPlum.framework/libLeanPlum.a"/>
+		<header-file src="lib/ios/LeanPlum.framework/Headers/LeanPlum.h"/>
+
+		<header-file src="src/ios/CDVLeanPlum.h" />
+		<source-file src="src/ios/CDVLeanPlum.m" />
+
+		<header-file src="src/ios/AppDelegate+notification.h" />
+		<source-file src="src/ios/AppDelegate+notification.m" />
+
+		<config-file target="*-Info.plist" parent="APP_ID">
+            <string>$APP_ID</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="DEVELOPMENT_KEY">
+            <string>$DEVELOPMENT_KEY</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="PRODUCTION_KEY">
+            <string>$PRODUCTION_KEY</string>
+        </config-file>
+
+	</platform>
+
+	<platform name="android">
+		<source-file src="src/android/res/values/leanplum.xml" target-dir="res/values" />
+
+		<config-file target="res/values/leanplum.xml" parent="/*">
+			<string name="app_id">$APP_ID</string>
+			<string name="development_key">$DEVELOPMENT_KEY</string>
+			<string name="production_key">$PRODUCTION_KEY</string>
+		</config-file>
+
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="Leanplum">
+				<param name="android-package" value="com.telerik.leanplum.LeanplumPlugin"/>
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+			<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+			<uses-permission android:name="android.permission.WAKE_LOCK" />
+			<uses-permission android:name="android.permission.VIBRATE"/>
+			<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+			<permission android:name="$PACKAGE_NAME.gcm.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+			<uses-permission android:name="$PACKAGE_NAME.gcm.permission.C2D_MESSAGE" />
+
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<receiver android:name="com.leanplum.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+				<intent-filter>
+					<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+					<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+					<category android:name="$PACKAGE_NAME.gcm" />
+				</intent-filter>
+			</receiver>
+			<service android:name="com.leanplum.LeanplumPushService" />
+		</config-file>
+
+		<source-file src="lib/android/Leanplum.jar" target-dir="libs/"/>
+		<source-file src="lib/android/gcm.jar" target-dir="libs/" />
+		<source-file src="lib/android/android-support-v13.jar" target-dir="libs/" />
+		<source-file src="src/android/LeanplumPlugin.java"  target-dir="src/com/telerik/leanplum" />
+		<source-file src="src/android/CordovaGCMBroadcastReceiver.java"  target-dir="src/com/telerik/leanplum" />
+
+	</platform>
+
+</plugin>
