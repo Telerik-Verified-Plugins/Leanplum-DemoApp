@@ -29,7 +29,7 @@
     "cordova-plugin-network-information",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "com.telerik.leanplum@1.1.0"
+    "com.telerik.leanplum@2.0.2"
   ],
   "AndroidPermissions": [
     "android.permission.ACCESS_COARSE_LOCATION",
